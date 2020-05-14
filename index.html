@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <title>Kreslení do plátna</title>
+    <script>
+        let cnv,ctx;
+        let x=300;
+        let y=200;
+        function kresli() {
+            cnv = document.getElementById("platno");
+            ctx = cnv.getContext("2d");
+
+            ctx.clearRect(0,0,cnv.width,cnv.height);
+
+            ctx.beginPath();
+            ctx.lineWidth = 5;
+            ctx.strokeStyle = "red";
+            ctx.moveTo(0,0);
+            ctx.lineTo(200,100);
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.strokeStyle = "green";
+            ctx.arc(100,200,30, 0,2*Math.PI);
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.fillStyle = "blue";
+            ctx.arc(200,200,20, 0,2*Math.PI);
+            ctx.fill();
+
+            x = x -1;
+            let img = new Image();
+            img.src = "http://dl.damto.cz/mimon.png";
+            ctx.drawImage(img, x, y, 50, 50);
+
+        }
+        function poNacteni() {
+            setInterval(kresli, 100);
+        }
+    </script>
+</head>
+<body onload="poNacteni()">
+
+<h1>Kreslení do plátna</h1>
+
+<canvas id="platno" width="600" height="400" style="background-color: silver"></canvas>
+
+</body>
+</html>
