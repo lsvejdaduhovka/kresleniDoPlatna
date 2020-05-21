@@ -67,6 +67,12 @@
             if (moveRight) {
                 x = x +1;
             }
+            if (moveUp) {
+                y = y -1;
+            }
+            if (moveDown) {
+                y = y +1;
+            }
             ctx.drawImage(img, x, y, 50, 50);
 
         }
