@@ -7,14 +7,17 @@
         let img = new Image();
         img.src = "http://dl.damto.cz/mimon.png";
         let cnv,ctx;
+        //mimon
         let x=300;
         let y=200;
         let moveUp,moveDown,moveLeft,moveRight;
+        //modry kruh
         let x2=200;
         let y2=200;
-        let r2=20; //polomer kruhu
+        let r2=20; //polomer
         let moveUp2,moveDown2,moveLeft2,moveRight2;
         function onKeyDown(event) {
+            //mimon
             if (event.key === "ArrowUp") {
                 moveUp = true;
             }
@@ -27,6 +30,7 @@
             if (event.key === "ArrowRight") {
                 moveRight = true;
             }
+            //modry kruh
             if (event.key === "w") {
                 moveUp2 = true;
             }
@@ -41,6 +45,7 @@
             }
         }
         function onKeyUp(event) {
+            //mimon
             if (event.key === "ArrowUp") {
                 moveUp = false;
             }
@@ -53,6 +58,7 @@
             if (event.key === "ArrowRight") {
                 moveRight = false;
             }
+            //modry kruh
             if (event.key === "w") {
                 moveUp2 = false;
             }
@@ -84,6 +90,7 @@
             ctx.arc(100,200,30, 0,2*Math.PI);
             ctx.stroke();
 
+            //modry kruh
             if (moveLeft2) {
                 x2 = x2 -1;
                 if (x2 < r2) { //kontrola leveho okraje
@@ -107,6 +114,7 @@
             ctx.arc(x2,y2,r2, 0,2*Math.PI);
             ctx.fill();
 
+            //mimon
             if (moveLeft) {
                 x = x -1;
             }
