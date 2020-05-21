@@ -4,9 +4,40 @@
     <meta charset="UTF-8">
     <title>Kreslení do plátna</title>
     <script>
+        let img = new Image();
+        img.src = "http://dl.damto.cz/mimon.png";
         let cnv,ctx;
         let x=300;
         let y=200;
+        let moveUp,moveDown,moveLeft,moveRight;
+        function onKeyDown(event) {
+            if (event.key === "ArrowUp") {
+                moveUp = true;
+            }
+            if (event.key === "ArrowDown") {
+                moveDown = true;
+            }
+            if (event.key === "ArrowLeft") {
+                moveLeft = true;
+            }
+            if (event.key === "ArrowRight") {
+                moveRight = true;
+            }
+        }
+        function onKeyUp(event) {
+            if (event.key === "ArrowUp") {
+                moveUp = false;
+            }
+            if (event.key === "ArrowDown") {
+                moveDown = false;
+            }
+            if (event.key === "ArrowLeft") {
+                moveLeft = false;
+            }
+            if (event.key === "ArrowRight") {
+                moveRight = false;
+            }
+        }
         function kresli() {
             cnv = document.getElementById("platno");
             ctx = cnv.getContext("2d");
@@ -30,18 +61,21 @@
             ctx.arc(200,200,20, 0,2*Math.PI);
             ctx.fill();
 
-            x = x -1;
-            let img = new Image();
-            img.src = "http://dl.damto.cz/mimon.png";
+            if (moveLeft) {
+                x = x -1;
+            }
+            if (moveRight) {
+                x = x +1;
+            }
             ctx.drawImage(img, x, y, 50, 50);
 
         }
         function poNacteni() {
-            setInterval(kresli, 100);
+            setInterval(kresli, 10);
         }
     </script>
 </head>
-<body onload="poNacteni()">
+<body onload="poNacteni()" onkeydown="onKeyDown(event)" onkeyup="onKeyUp(event)">
 
 <h1>Kreslení do plátna</h1>
 
