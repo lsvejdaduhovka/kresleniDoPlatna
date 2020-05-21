@@ -12,6 +12,7 @@
         let moveUp,moveDown,moveLeft,moveRight;
         let x2=200;
         let y2=200;
+        let r2=20; //polomer kruhu
         let moveUp2,moveDown2,moveLeft2,moveRight2;
         function onKeyDown(event) {
             if (event.key === "ArrowUp") {
@@ -85,9 +86,15 @@
 
             if (moveLeft2) {
                 x2 = x2 -1;
+                if (x2 < r2) { //kontrola leveho okraje
+                    x2 = r2;
+                }
             }
             if (moveRight2) {
                 x2 = x2 +1;
+                if (x2 > cnv.width - r2) { //kontrola praveho okraje
+                    x2 = cnv.width - r2;
+                }
             }
             if (moveUp2) {
                 y2 = y2 -1;
@@ -97,7 +104,7 @@
             }
             ctx.beginPath();
             ctx.fillStyle = "blue";
-            ctx.arc(x2,y2,20, 0,2*Math.PI);
+            ctx.arc(x2,y2,r2, 0,2*Math.PI);
             ctx.fill();
 
             if (moveLeft) {
