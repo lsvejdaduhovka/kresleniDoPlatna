@@ -11,6 +11,12 @@
         let x=300;
         let y=200;
         let moveUp,moveDown,moveLeft,moveRight;
+        //zelena kruznice
+        let x3=100;
+        let y3=200;
+        let r3=30; //polomer
+        let vx3=4;
+        let vy3=-2;
         //modry kruh
         let x2=200;
         let y2=200;
@@ -85,9 +91,24 @@
             ctx.lineTo(200,100);
             ctx.stroke();
 
+            //zelena kruznice
+            x3 = x3 + vx3;
+            y3 = y3 + vy3;
+            if (x3 <= r3) { //kontrola leveho okraje
+                vx3 = -1 * vx3;
+            }
+            if (x3 > cnv.width - r3) { //kontrola praveho okraje
+                vx3 = -1 * vx3;
+            }
+            if (y3 <= r3) { //kontrola horniho okraje
+                vy3 = -1 * vy3;
+            }
+            if (y3 > cnv.height - r3) { //kontrola dolniho okraje
+                vy3 = -1 * vy3;
+            }
             ctx.beginPath();
             ctx.strokeStyle = "green";
-            ctx.arc(100,200,30, 0,2*Math.PI);
+            ctx.arc(x3,y3,r3, 0,2*Math.PI);
             ctx.stroke();
 
             //modry kruh
